@@ -179,7 +179,7 @@ src="https://www.facebook.com/tr?id=1123148293569460&ev=PageView&noscript=1"
 
   .ejemplos-viewport{overflow:hidden;padding-bottom:12px}
   .ejemplos-track{display:flex;gap:16px;width:max-content;animation:ej-loop 32s linear infinite}
-  .ejemplos-viewport:hover .ejemplos-track{animation-play-state:paused}
+  @media (hover:hover) and (pointer:fine){.ejemplos-viewport:hover .ejemplos-track{animation-play-state:paused}}
   @keyframes ej-loop{from{transform:translateX(0)}to{transform:translateX(-50%)}}
   @media (prefers-reduced-motion:reduce){.ejemplos-track{animation:none;overflow-x:auto}}
   .ej-shot{flex:0 0 220px}
