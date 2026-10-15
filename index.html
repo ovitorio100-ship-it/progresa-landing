@@ -318,8 +318,8 @@ src="https://www.facebook.com/tr?id=1123148293569460&ev=PageView&noscript=1"
     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M8 12l2.5 2.5L16 9"></path></svg>
     App · Sistema Progresa
   </span>
-  <h1 id="hero-h1">Tu hijo entrena tres veces por semana. <span class="accent">¿Sabes si de verdad está mejorando?</span></h1>
-  <p class="lead" id="hero-lead">Progresa es el sistema de <b>+300 ejercicios con progresión</b>: cada semana sabes qué hacer, cómo subir la dificultad y por qué. Sin improvisar y sin buscar videos sueltos a las 10 de la noche.</p>
+  <h1 id="hero-h1">Un entrenador amateur improvisa. <span class="accent">Uno profesional planifica.</span></h1>
+  <p class="lead" id="hero-lead">Cualquiera llena una hora con ejercicios. Progresa te da <b>+300 ejercicios con progresión</b>: sabes qué trabajar, por qué elegiste cada ejercicio y cuándo subir la dificultad.</p>
 
   <div class="hero-mockup-wrap">
     <img src="img/hero-mockup.webp" alt="App Progresa mostrando la sesión del día" class="hero-mockup-img">
@@ -337,13 +337,13 @@ src="https://www.facebook.com/tr?id=1123148293569460&ev=PageView&noscript=1"
 </div>
 
 <script>
-  // Hero por avatar: ?avatar=entrenador cambia el titular; sin parametro queda la version para padres.
+  // Hero por avatar: por defecto entrenador; ?avatar=padre cambia a la version para padres.
   (function(){
     var a = new URLSearchParams(location.search).get("avatar");
-    if(a !== "entrenador") return;
+    if(a !== "padre") return;
     var h = document.getElementById("hero-h1"), l = document.getElementById("hero-lead");
-    if(h) h.innerHTML = "Un entrenador amateur improvisa. <span class=\"accent\">Uno profesional planifica.</span>";
-    if(l) l.innerHTML = "Cualquiera llena una hora con ejercicios. Progresa te da <b>+300 ejercicios con progresión</b>: sabes qué trabajar, por qué elegiste cada ejercicio y cuándo subir la dificultad.";
+    if(h) h.innerHTML = "Tu hijo entrena tres veces por semana. <span class=\"accent\">¿Sabes si de verdad está mejorando?</span>";
+    if(l) l.innerHTML = "Progresa es el sistema de <b>+300 ejercicios con progresión</b>: cada semana sabes qué hacer, cómo subir la dificultad y por qué. Sin improvisar y sin buscar videos sueltos a las 10 de la noche.";
   })();
 </script>
 
