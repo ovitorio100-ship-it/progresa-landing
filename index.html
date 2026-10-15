@@ -682,17 +682,24 @@ src="https://www.facebook.com/tr?id=1123148293569460&ev=PageView&noscript=1"
       if(e.clientY <= 0 && !e.relatedTarget) show();
     });
 
-    // Mobile: intercepta el botón de volver una vez, antes de dejar salir
+    // Mobile: sin interceptar el botón de volver. Se abre cuando la persona
+    // subió el scroll (señal de duda) después de ver los planes o de pasar ~25s.
     if(window.innerWidth < 860 && !alreadyShown()){
-      try {
-        history.pushState({ progresaExit: true }, '');
-        window.addEventListener('popstate', function(){
-          if(!alreadyShown()){
-            show();
-            history.pushState({ progresaExit: true }, '');
-          }
-        });
-      } catch(e){}
+      var planesEl = document.getElementById('planes');
+      var seenPlanes = false;
+      var timeOk = false;
+      var maxY = 0;
+      setTimeout(function(){ timeOk = true; }, 25000);
+      if(planesEl && 'IntersectionObserver' in window){
+        new IntersectionObserver(function(entries){
+          entries.forEach(function(en){ if(en.isIntersecting) seenPlanes = true; });
+        }, { threshold: 0.3 }).observe(planesEl);
+      }
+      window.addEventListener('scroll', function(){
+        var y = window.pageYOffset || document.documentElement.scrollTop || 0;
+        if(y > maxY) maxY = y;
+        if((seenPlanes || timeOk) && maxY - y >= 250 && maxY > 600) show();
+      }, { passive: true });
     }
   })();
 </script>
