@@ -291,17 +291,6 @@ src="https://www.facebook.com/tr?id=1123148293569460&ev=PageView&noscript=1"
     .vars{grid-template-columns:repeat(2,minmax(0,1fr))}
   }
 
-  .exit-overlay{position:fixed;inset:0;z-index:50;background:rgba(14,27,42,.6);display:none;align-items:center;justify-content:center;padding:20px}
-  .exit-overlay.show{display:flex}
-  .exit-modal{background:#fff;border-radius:22px;max-width:420px;width:100%;padding:30px 26px;position:relative;text-align:center;box-shadow:0 30px 60px -20px rgba(0,0,0,.4)}
-  .exit-close{position:absolute;top:14px;right:16px;width:30px;height:30px;border-radius:50%;background:var(--bg-stripe);border:none;color:var(--muted);font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center}
-  .exit-chip{display:inline-flex;background:var(--warn-bg);color:var(--warn-text);font-size:12px;font-weight:800;padding:6px 14px;border-radius:999px;margin-bottom:14px}
-  .exit-modal h3{font-size:22px;font-weight:800;line-height:1.25;margin-bottom:10px}
-  .exit-modal p{font-size:14px;color:var(--muted);line-height:1.55;margin-bottom:18px}
-  .exit-price{display:flex;align-items:baseline;justify-content:center;gap:10px;margin-bottom:18px}
-  .exit-price .old{font-size:16px;color:var(--faint);text-decoration:line-through}
-  .exit-price .new{font-size:36px;font-weight:800;font-family:'Sora',sans-serif;color:var(--accent-dark)}
-  .exit-note{font-size:11.5px;color:var(--faint);margin-top:10px}
 </style>
 </head>
 <body>
@@ -619,20 +608,6 @@ src="https://www.facebook.com/tr?id=1123148293569460&ev=PageView&noscript=1"
   <a href="#planes" class="btn">Ver planes</a>
 </div>
 
-<div class="exit-overlay" id="exit-overlay">
-  <div class="exit-modal">
-    <button class="exit-close" id="exit-close" aria-label="Cerrar">✕</button>
-    <span class="exit-chip">Espera, antes de irte</span>
-    <h3>Llévate el Plan Completo al precio del Básico</h3>
-    <p>Sistema de progresión completo, variantes por edad y los 3 bonos, todo por el mismo precio del plan más simple.</p>
-    <div class="exit-price">
-      <span class="old">US$12,90</span> <span class="new">US$6,90</span>
-    </div>
-    <a href="https://pay.hotmart.com/T108003746R?off=dwsvqt5v" class="btn" style="width:100%">Quiero esta oferta</a>
-    <p class="exit-note">Precio en dólares (USD). Al pagar verás el equivalente en tu moneda.</p>
-  </div>
-</div>
-
 <script>
   (function(){
     var seconds = 900;
@@ -664,59 +639,7 @@ src="https://www.facebook.com/tr?id=1123148293569460&ev=PageView&noscript=1"
   })();
 </script>
 
-<script>
-  (function(){
-    var overlay = document.getElementById('exit-overlay');
-    var closeBtn = document.getElementById('exit-close');
-    if(!overlay || !closeBtn) return;
-    var KEY = 'progresa_exit_shown';
-    var shown = false;
 
-    function alreadyShown(){
-      try { return sessionStorage.getItem(KEY) === '1'; } catch(e){ return shown; }
-    }
-    function markShown(){
-      shown = true;
-      try { sessionStorage.setItem(KEY, '1'); } catch(e){}
-    }
-    function show(){
-      if(alreadyShown()) return;
-      overlay.classList.add('show');
-      markShown();
-    }
-    function hide(){
-      overlay.classList.remove('show');
-    }
-
-    closeBtn.addEventListener('click', hide);
-    overlay.addEventListener('click', function(e){ if(e.target === overlay) hide(); });
-
-    // Desktop: mouse saliendo por el tope de la ventana (hacia la barra de pestañas)
-    document.addEventListener('mouseout', function(e){
-      if(e.clientY <= 0 && !e.relatedTarget) show();
-    });
-
-    // Mobile: sin interceptar el botón de volver. Se abre cuando la persona
-    // subió el scroll (señal de duda) después de ver los planes o de pasar ~25s.
-    if(window.innerWidth < 860 && !alreadyShown()){
-      var planesEl = document.getElementById('planes');
-      var seenPlanes = false;
-      var timeOk = false;
-      var maxY = 0;
-      setTimeout(function(){ timeOk = true; }, 25000);
-      if(planesEl && 'IntersectionObserver' in window){
-        new IntersectionObserver(function(entries){
-          entries.forEach(function(en){ if(en.isIntersecting) seenPlanes = true; });
-        }, { threshold: 0.3 }).observe(planesEl);
-      }
-      window.addEventListener('scroll', function(){
-        var y = window.pageYOffset || document.documentElement.scrollTop || 0;
-        if(y > maxY) maxY = y;
-        if((seenPlanes || timeOk) && maxY - y >= 250 && maxY > 600) show();
-      }, { passive: true });
-    }
-  })();
-</script>
 
 </body>
 </html>
