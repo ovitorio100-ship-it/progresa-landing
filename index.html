@@ -248,6 +248,11 @@ src="https://www.facebook.com/tr?id=1123148293569460&ev=PageView&noscript=1"
 
   .testi-grid{display:flex;flex-wrap:wrap;gap:18px;justify-content:center}
   .testi-shot{flex:0 1 220px;min-width:180px}
+  @media (max-width:720px){
+    .testi-grid{flex-wrap:nowrap;justify-content:flex-start;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;gap:14px;padding:4px 24px 10px;margin:0 -24px;scrollbar-width:none}
+    .testi-grid::-webkit-scrollbar{display:none}
+    .testi-shot{flex:0 0 78%;min-width:0;scroll-snap-align:center}
+  }
   .testi-shot img{width:100%;border-radius:14px;display:block;box-shadow:0 12px 28px -14px rgba(14,27,42,.3)}
   .testi-shot .testi-cap{text-align:center;font-size:12px;color:var(--muted);font-weight:700;padding:8px 0 0}
   .testi-card{flex:1 1 280px;min-width:0;padding:24px;border-style:dashed}
