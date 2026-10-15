@@ -283,6 +283,18 @@ src="https://www.facebook.com/tr?id=1123148293569460&ev=PageView&noscript=1"
     .hero h1{font-size:28px}
     .vars{grid-template-columns:repeat(2,minmax(0,1fr))}
   }
+
+  .exit-overlay{position:fixed;inset:0;z-index:50;background:rgba(14,27,42,.6);display:none;align-items:center;justify-content:center;padding:20px}
+  .exit-overlay.show{display:flex}
+  .exit-modal{background:#fff;border-radius:22px;max-width:420px;width:100%;padding:30px 26px;position:relative;text-align:center;box-shadow:0 30px 60px -20px rgba(0,0,0,.4)}
+  .exit-close{position:absolute;top:14px;right:16px;width:30px;height:30px;border-radius:50%;background:var(--bg-stripe);border:none;color:var(--muted);font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center}
+  .exit-chip{display:inline-flex;background:var(--warn-bg);color:var(--warn-text);font-size:12px;font-weight:800;padding:6px 14px;border-radius:999px;margin-bottom:14px}
+  .exit-modal h3{font-size:22px;font-weight:800;line-height:1.25;margin-bottom:10px}
+  .exit-modal p{font-size:14px;color:var(--muted);line-height:1.55;margin-bottom:18px}
+  .exit-price{display:flex;align-items:baseline;justify-content:center;gap:10px;margin-bottom:18px}
+  .exit-price .old{font-size:16px;color:var(--faint);text-decoration:line-through}
+  .exit-price .new{font-size:36px;font-weight:800;font-family:'Sora',sans-serif;color:var(--accent-dark)}
+  .exit-note{font-size:11.5px;color:var(--faint);margin-top:10px}
 </style>
 </head>
 <body>
@@ -409,6 +421,20 @@ src="https://www.facebook.com/tr?id=1123148293569460&ev=PageView&noscript=1"
   </div>
 </div>
 
+<!-- 8. TESTIMONIOS -->
+<div class="wrap section-pad">
+  <h2 style="font-size:28px;font-weight:800;text-align:center;margin-bottom:28px">Lo que dicen padres y entrenadores</h2>
+  <div class="testi-grid">
+    <div class="testi-shot"><img src="img/testi-carlos.webp" loading="lazy" alt="Conversación de WhatsApp con Carlos, entrenador"><p class="testi-cap">Carlos · Entrenador</p></div>
+    <div class="testi-shot"><img src="img/testi-andres.webp" loading="lazy" alt="Conversación de WhatsApp con Andrés, entrenador de fútbol base"><p class="testi-cap">Andrés · Fútbol base</p></div>
+    <div class="testi-shot"><img src="img/testi-pedro.webp" loading="lazy" alt="Conversación de WhatsApp con Pedro, padre de jugador"><p class="testi-cap">Pedro · Padre de jugador</p></div>
+    <div class="testi-shot"><img src="img/testi-javier.webp" loading="lazy" alt="Conversación de WhatsApp con Javier, escuela de fútbol"><p class="testi-cap">Javier · Escuela de fútbol</p></div>
+  </div>
+  <div style="text-align:center;margin-top:32px">
+    <a href="#planes" class="btn">Ver planes y empezar</a>
+  </div>
+</div>
+
 <!-- 5. PLANES -->
 <div id="planes" class="planes-wrap">
   <div class="planes-head">
@@ -505,20 +531,6 @@ src="https://www.facebook.com/tr?id=1123148293569460&ev=PageView&noscript=1"
   </div>
 </div>
 
-<!-- 8. TESTIMONIOS -->
-<div class="wrap section-pad">
-  <h2 style="font-size:28px;font-weight:800;text-align:center;margin-bottom:28px">Lo que dicen padres y entrenadores</h2>
-  <div class="testi-grid">
-    <div class="testi-shot"><img src="img/testi-carlos.webp" loading="lazy" alt="Conversación de WhatsApp con Carlos, entrenador"><p class="testi-cap">Carlos · Entrenador</p></div>
-    <div class="testi-shot"><img src="img/testi-andres.webp" loading="lazy" alt="Conversación de WhatsApp con Andrés, entrenador de fútbol base"><p class="testi-cap">Andrés · Fútbol base</p></div>
-    <div class="testi-shot"><img src="img/testi-pedro.webp" loading="lazy" alt="Conversación de WhatsApp con Pedro, padre de jugador"><p class="testi-cap">Pedro · Padre de jugador</p></div>
-    <div class="testi-shot"><img src="img/testi-javier.webp" loading="lazy" alt="Conversación de WhatsApp con Javier, escuela de fútbol"><p class="testi-cap">Javier · Escuela de fútbol</p></div>
-  </div>
-  <div style="text-align:center;margin-top:32px">
-    <a href="#planes" class="btn">Ver planes y empezar</a>
-  </div>
-</div>
-
 <!-- 9. GARANTIA -->
 <div class="garantia">
   <div style="max-width:760px;margin:0 auto">
@@ -572,6 +584,20 @@ src="https://www.facebook.com/tr?id=1123148293569460&ev=PageView&noscript=1"
   <a href="#planes" class="btn">Ver planes</a>
 </div>
 
+<div class="exit-overlay" id="exit-overlay">
+  <div class="exit-modal">
+    <button class="exit-close" id="exit-close" aria-label="Cerrar">✕</button>
+    <span class="exit-chip">⏳ Espera, oferta única</span>
+    <h3>Llévate el Plan Completo al precio del Básico</h3>
+    <p>Sistema de progresión completo, variantes por edad y los 3 bonos — todo por el mismo precio del plan más simple. Solo por hoy.</p>
+    <div class="exit-price">
+      <span class="old">$12,90</span> <span class="new">$6,90</span>
+    </div>
+    <a href="https://pay.hotmart.com/T108003746R?off=74n7p9op" class="btn" style="width:100%">Quiero esta oferta</a>
+    <p class="exit-note">Precio final en tu moneda, calculado automáticamente al pagar</p>
+  </div>
+</div>
+
 <script>
   (function(){
     var seconds = 900;
@@ -600,6 +626,53 @@ src="https://www.facebook.com/tr?id=1123148293569460&ev=PageView&noscript=1"
     }
     window.addEventListener('scroll', toggle, { passive: true });
     toggle();
+  })();
+</script>
+
+<script>
+  (function(){
+    var overlay = document.getElementById('exit-overlay');
+    var closeBtn = document.getElementById('exit-close');
+    if(!overlay || !closeBtn) return;
+    var KEY = 'progresa_exit_shown';
+    var shown = false;
+
+    function alreadyShown(){
+      try { return sessionStorage.getItem(KEY) === '1'; } catch(e){ return shown; }
+    }
+    function markShown(){
+      shown = true;
+      try { sessionStorage.setItem(KEY, '1'); } catch(e){}
+    }
+    function show(){
+      if(alreadyShown()) return;
+      overlay.classList.add('show');
+      markShown();
+    }
+    function hide(){
+      overlay.classList.remove('show');
+    }
+
+    closeBtn.addEventListener('click', hide);
+    overlay.addEventListener('click', function(e){ if(e.target === overlay) hide(); });
+
+    // Desktop: mouse saliendo por el tope de la ventana (hacia la barra de pestañas)
+    document.addEventListener('mouseout', function(e){
+      if(e.clientY <= 0 && !e.relatedTarget) show();
+    });
+
+    // Mobile: intercepta el botón de volver una vez, antes de dejar salir
+    if(window.innerWidth < 860 && !alreadyShown()){
+      try {
+        history.pushState({ progresaExit: true }, '');
+        window.addEventListener('popstate', function(){
+          if(!alreadyShown()){
+            show();
+            history.pushState({ progresaExit: true }, '');
+          }
+        });
+      } catch(e){}
+    }
   })();
 </script>
 
