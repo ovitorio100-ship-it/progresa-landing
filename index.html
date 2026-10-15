@@ -318,8 +318,8 @@ src="https://www.facebook.com/tr?id=1123148293569460&ev=PageView&noscript=1"
     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M8 12l2.5 2.5L16 9"></path></svg>
     App · Sistema Progresa
   </span>
-  <h1>Tu hijo entrena tres veces por semana. <span class="accent">¿Sabes si de verdad está mejorando?</span></h1>
-  <p class="lead">Progresa es el sistema de <b>+300 ejercicios con progresión</b>: cada semana sabes qué hacer, cómo subir la dificultad y por qué. Sin improvisar y sin buscar videos sueltos a las 10 de la noche.</p>
+  <h1 id="hero-h1">Tu hijo entrena tres veces por semana. <span class="accent">¿Sabes si de verdad está mejorando?</span></h1>
+  <p class="lead" id="hero-lead">Progresa es el sistema de <b>+300 ejercicios con progresión</b>: cada semana sabes qué hacer, cómo subir la dificultad y por qué. Sin improvisar y sin buscar videos sueltos a las 10 de la noche.</p>
 
   <div class="hero-mockup-wrap">
     <img src="img/hero-mockup.webp" alt="App Progresa mostrando la sesión del día" class="hero-mockup-img">
@@ -335,6 +335,17 @@ src="https://www.facebook.com/tr?id=1123148293569460&ev=PageView&noscript=1"
     <div class="trustitem"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5a11 11 0 0114 0M8 16a6.5 6.5 0 018 0M12 19.5h.01"></path><line x1="3" y1="3" x2="21" y2="21"></line></svg>Funciona sin internet</div>
   </div>
 </div>
+
+<script>
+  // Hero por avatar: ?avatar=entrenador cambia el titular; sin parametro queda la version para padres.
+  (function(){
+    var a = new URLSearchParams(location.search).get("avatar");
+    if(a !== "entrenador") return;
+    var h = document.getElementById("hero-h1"), l = document.getElementById("hero-lead");
+    if(h) h.innerHTML = "Un entrenador amateur improvisa. <span class=\"accent\">Uno profesional planifica.</span>";
+    if(l) l.innerHTML = "Cualquiera llena una hora con ejercicios. Progresa te da <b>+300 ejercicios con progresión</b>: sabes qué trabajar, por qué elegiste cada ejercicio y cuándo subir la dificultad.";
+  })();
+</script>
 
 <!-- 3. PROBLEMA + MECANISMO -->
 <div class="problema">
