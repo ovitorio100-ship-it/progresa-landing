@@ -641,5 +641,25 @@ src="https://www.facebook.com/tr?id=1123148293569460&ev=PageView&noscript=1"
 
 
 
+<script>
+  // Evento propio: InitiateCheckout al hacer clic en el boton de compra de cualquiera de los 2 planos.
+  (function(){
+    var PLANES = {
+      "dwsvqt5v": { name: "Plan Basico", value: 6.90 },
+      "74n7p9op": { name: "Plan Completo", value: 12.90 }
+    };
+    document.addEventListener("click", function(e){
+      var a = e.target && e.target.closest ? e.target.closest("a[href*=\"pay.hotmart.com\"]") : null;
+      if(!a || typeof window.fbq !== "function") return;
+      var m = (a.getAttribute("href") || "").match(/off=([a-z0-9]+)/i);
+      var p = m && PLANES[m[1]];
+      if(!p) return;
+      window.progresaIC = (window.progresaIC || 0) + 1;
+      fbq("track", "InitiateCheckout", {
+        content_name: p.name, content_category: "Progresa", value: p.value, currency: "USD", num_items: 1
+      });
+    }, true);
+  })();
+</script>
 </body>
 </html>
