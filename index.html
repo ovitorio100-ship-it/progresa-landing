@@ -315,8 +315,15 @@ src="https://www.facebook.com/tr?id=1123148293569460&ev=PageView&noscript=1"
     <img src="img/hero-mockup.webp" alt="App Progresa mostrando la sesión del día" class="hero-mockup-img">
   </div>
 
+  <div style="text-align:center;margin:4px 0 -2px">
+    <div style="display:flex;align-items:baseline;justify-content:center;gap:14px">
+      <span style="font-size:22px;font-weight:800;color:#C0392B;text-decoration:line-through;text-decoration-thickness:3px">US$27</span>
+      <span style="font-family:'Sora',sans-serif;font-weight:800;color:var(--primary);line-height:1"><span style="font-size:34px">US$</span><span style="font-size:64px">6</span><span style="font-size:32px">,90</span></span>
+    </div>
+    <p style="font-size:13.5px;color:var(--muted);font-weight:600;margin:6px 0 0">Pago único · precio en dólares (USD) · en el pago ves el valor en tu moneda local</p>
+  </div>
   <a href="#planes" class="btn" style="width:100%;max-width:360px">Quiero ver los planes</a>
-  <p style="font-size:13px;color:var(--muted);font-weight:600;margin:-6px 0 0">Desde <b style="color:var(--primary)">US$6,90</b> (dólares) · pago único · garantía de 30 días</p>
+  <p style="font-size:13px;color:var(--muted);font-weight:600;margin:-6px 0 0">Sin mensualidades · garantía de 30 días</p>
 
   <div class="trustgrid">
     <div class="trustitem"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L4 14h6l-1 8 9-12h-6l1-8z"></path></svg>Acceso inmediato</div>
@@ -649,6 +656,22 @@ src="https://www.facebook.com/tr?id=1123148293569460&ev=PageView&noscript=1"
         content_name: p.name, content_category: "Progresa", value: p.value, currency: "USD", num_items: 1
       });
     }, true);
+  })();
+</script>
+<script>
+  // Eventos de rolagem para medir en que punto sale el lead (solo medicion).
+  (function(){
+    var sent = {};
+    function send(n){ if(sent[n] || typeof window.fbq !== "function") return; sent[n]=1; fbq("trackCustom", n); }
+    window.addEventListener("scroll", function(){
+      var h = document.documentElement.scrollHeight - window.innerHeight; if(h<=0) return;
+      var p = window.scrollY / h * 100;
+      if(p>=25) send("Scroll25"); if(p>=50) send("Scroll50"); if(p>=75) send("Scroll75");
+    }, { passive:true });
+    var pl = document.getElementById("planes");
+    if(pl && "IntersectionObserver" in window){
+      new IntersectionObserver(function(en){ if(en[0].isIntersecting) send("VioPlanes"); }, { threshold:.3 }).observe(pl);
+    }
   })();
 </script>
 </body>
