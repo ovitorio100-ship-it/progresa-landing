@@ -291,6 +291,24 @@ src="https://www.facebook.com/tr?id=1123148293569460&ev=PageView&noscript=1"
     .vars{grid-template-columns:repeat(2,minmax(0,1fr))}
   }
 
+
+  /* Planes del CTA: lado a lado tambien en el celular */
+  .of-cards{display:flex;gap:14px;justify-content:center;max-width:780px;margin:0 auto;align-items:stretch}
+  .of-card{flex:1 1 0;min-width:0;max-width:370px;padding:22px;text-align:left;display:flex;flex-direction:column}
+  .of-card .of-btn{margin-top:auto}
+  .of-card ul{list-style:none;padding:0;margin:0 0 16px;font-size:14.5px;line-height:1.75}
+  .of-card .mob{display:none}
+  .of-price{font-family:'Sora',sans-serif;font-size:40px;font-weight:800}
+  .fx-box{max-width:780px;margin:0 auto 16px;background:#E9F6EC;border:2px solid #2E9E5B;border-radius:14px;padding:12px 16px;text-align:center;color:#14532D;font-weight:700;font-size:15px;line-height:1.45}
+  @media (max-width:640px){
+    .of-cards{gap:8px}
+    .of-card{padding:12px 10px}
+    .of-card .desk{display:none}.of-card .mob{display:block}
+    .of-price{font-size:26px}
+    .of-card ul{font-size:12.5px;line-height:1.6;margin-bottom:12px}
+    .of-card .btn{padding:12px 6px;font-size:13px}
+    .fx-box{font-size:14px}
+  }
 </style>
 <script>!function(i,n){i._plt=i._plt||(n&&n.timeOrigin?n.timeOrigin+n.now():Date.now())}(window,performance);</script>
 <link rel="preload" href="https://scripts.converteai.net/f018249e-95ce-4729-ba96-0cad0e0796e9/players/6ad41c1f2f08e3e264f04450/v4/player.js" as="script">
@@ -305,7 +323,7 @@ src="https://www.facebook.com/tr?id=1123148293569460&ev=PageView&noscript=1"
 
 <nav class="sticky">
   <div class="top-urgency">
-    🔥 Precio de lanzamiento · termina en <b id="tl-top" class="launch-t">--:--:--</b> · Pago único · Garantía de 30 días
+    🔥 Precio de lanzamiento: termina en <b id="tl-top" class="launch-t">--:--:--</b>
   </div>
 </nav>
 
@@ -319,27 +337,30 @@ src="https://www.facebook.com/tr?id=1123148293569460&ev=PageView&noscript=1"
 </div>
 
 <!-- 2. CTA INMEDIATO -->
-<div class="wrap" id="oferta" style="padding:8px 20px 36px">
+<div class="wrap" id="oferta" style="padding:8px 14px 36px">
   <p style="text-align:center;margin:0 0 6px;font-size:16px;color:var(--muted);font-weight:600">Ya viste cómo funciona. Elige tu plan y empieza hoy:</p>
   <p style="text-align:center;margin:0 0 14px"><span style="display:inline-block;background:var(--accent);color:#fff;font-weight:800;font-size:13px;border-radius:999px;padding:6px 14px">PRECIO DE LANZAMIENTO · HASTA 74% DE DESCUENTO</span></p>
   <p class="launch" style="text-align:center;margin:-4px 0 14px;font-size:14px;color:var(--muted);font-weight:600">El precio de lanzamiento termina en <b id="tl-cta" class="launch-t" style="font-family:'Sora',sans-serif;font-size:20px;color:var(--accent-dark)">--:--:--</b></p>
-  <div style="display:flex;flex-wrap:wrap;gap:14px;justify-content:center;max-width:780px;margin:0 auto">
-    <div class="card" style="flex:1 1 290px;max-width:370px;padding:22px;text-align:left">
+  <div class="fx-box">🌎 El precio está en dólares (USD) y al pagar se convierte automáticamente a tu moneda local.</div>
+  <div class="of-cards">
+    <div class="card of-card">
       <div style="font-size:12px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.05em">Plan Básico</div>
-      <div style="margin:6px 0 2px"><span style="text-decoration:line-through;text-decoration-thickness:2px;color:#C0392B;font-size:16px;font-weight:700">US$27</span> <span style="font-family:'Sora',sans-serif;font-size:40px;font-weight:800;color:var(--primary)">US$6,90</span></div>
-      <p style="margin:0 0 10px;font-size:12.5px;color:var(--muted)">Pago único · sin mensualidades</p>
-      <ul style="list-style:none;padding:0;margin:0 0 16px;font-size:14.5px;line-height:1.75"><li>✓ Biblioteca de +300 ejercicios</li><li>✓ Paso a paso y diagrama de cada uno</li><li>✓ Ejercicio del día</li><li>✓ Garantía de 30 días</li></ul>
-      <a href="https://pay.hotmart.com/T108003746R?off=dwsvqt5v" class="btn btn-outline" style="width:100%">Empezar con el Básico</a>
+      <div style="margin:6px 0 2px"><span style="text-decoration:line-through;text-decoration-thickness:2px;color:#C0392B;font-size:15px;font-weight:700">US$27</span><br><span class="of-price" style="color:var(--primary)">US$6,90</span></div>
+      <p style="margin:0 0 10px;font-size:12px;color:var(--muted)">Pago único · sin mensualidades</p>
+      <ul class="desk"><li>✓ Biblioteca de +300 ejercicios</li><li>✓ Paso a paso y diagrama de cada uno</li><li>✓ Ejercicio del día</li><li>✓ Garantía de 30 días</li></ul>
+      <ul class="mob"><li>✓ +300 ejercicios</li><li>✓ Paso a paso y diagrama</li><li>✓ Ejercicio del día</li><li>✓ Garantía 30 días</li></ul>
+      <a href="https://pay.hotmart.com/T108003746R?off=dwsvqt5v" class="btn btn-outline of-btn" style="width:100%">Empezar con el Básico</a>
     </div>
-    <div class="card" style="flex:1 1 290px;max-width:370px;padding:22px;text-align:left;border:2px solid var(--accent);box-shadow:0 18px 36px -20px rgba(255,107,53,.4)">
+    <div class="card of-card" style="border:2px solid var(--accent);box-shadow:0 18px 36px -20px rgba(255,107,53,.4)">
       <div style="font-size:12px;font-weight:800;color:var(--accent-dark);text-transform:uppercase;letter-spacing:.05em">★ Plan Completo · el más elegido</div>
-      <div style="margin:6px 0 2px"><span style="text-decoration:line-through;text-decoration-thickness:2px;color:#C0392B;font-size:16px;font-weight:700">US$47</span> <span style="font-family:'Sora',sans-serif;font-size:40px;font-weight:800;color:var(--accent-dark)">US$12,90</span></div>
-      <p style="margin:0 0 10px;font-size:12.5px;color:var(--muted)">Pago único · sin mensualidades</p>
-      <ul style="list-style:none;padding:0;margin:0 0 16px;font-size:14.5px;line-height:1.75"><li>✓ Todo el Plan Básico</li><li>✓ Plan de 12 semanas y sesión del día guiada</li><li>✓ Progresión de cada ejercicio y ajuste por edad (Sub-8 a Sub-17)</li><li>✓ 3 bonos incluidos (valor US$42)</li><li>✓ Garantía de 30 días</li></ul>
-      <a href="https://pay.hotmart.com/T108003746R?off=74n7p9op" class="btn" style="width:100%">Quiero el Completo</a>
+      <div style="margin:6px 0 2px"><span style="text-decoration:line-through;text-decoration-thickness:2px;color:#C0392B;font-size:15px;font-weight:700">US$47</span><br><span class="of-price" style="color:var(--accent-dark)">US$12,90</span></div>
+      <p style="margin:0 0 10px;font-size:12px;color:var(--muted)">Pago único · sin mensualidades</p>
+      <ul class="desk"><li>✓ Todo el Plan Básico</li><li>✓ Plan de 12 semanas y sesión del día guiada</li><li>✓ Progresión de cada ejercicio y ajuste por edad (Sub-8 a Sub-17)</li><li>✓ 3 bonos incluidos (valor US$42)</li><li>✓ Garantía de 30 días</li></ul>
+      <ul class="mob"><li>✓ Todo el Básico</li><li>✓ Plan de 12 semanas</li><li>✓ Ajuste por edad</li><li>✓ 3 bonos (US$42)</li><li>✓ Garantía 30 días</li></ul>
+      <a href="https://pay.hotmart.com/T108003746R?off=74n7p9op" class="btn of-btn" style="width:100%">Quiero el Completo</a>
     </div>
   </div>
-  <p style="text-align:center;font-size:12.5px;color:var(--muted);margin:14px 0 0">Precio de lanzamiento en dólares (USD) · en el pago ves el valor en tu moneda local · <a href="#planes" style="text-decoration:underline">comparar los dos planes</a></p>
+  <p style="text-align:center;font-size:12.5px;color:var(--muted);margin:14px 0 0"><a href="#planes" style="text-decoration:underline">comparar los dos planes</a></p>
 </div>
 
 <!-- 8. TESTIMONIOS -->
@@ -500,6 +521,7 @@ src="https://www.facebook.com/tr?id=1123148293569460&ev=PageView&noscript=1"
   <div class="planes-head">
     <h2 style="font-size:30px;font-weight:800">Elige tu plan</h2>
     <p style="font-size:14px;color:var(--muted);margin:8px 0 0">Precios en dólares (USD) · pago único · sin mensualidades</p>
+    <p class="fx-box" style="margin:12px auto 0">🌎 Al pagar, el precio se convierte automáticamente a tu moneda local.</p>
   </div>
   <div class="planes-trust">
     <span class="chip" style="margin-right:8px">⚡ Acceso inmediato</span>
