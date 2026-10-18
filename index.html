@@ -305,7 +305,7 @@ src="https://www.facebook.com/tr?id=1123148293569460&ev=PageView&noscript=1"
 
 <nav class="sticky">
   <div class="top-urgency">
-    🔥 Precio de lanzamiento en dólares (USD) · Pago único · Garantía de 30 días
+    🔥 Precio de lanzamiento · termina en <b id="tl-top" class="launch-t">--:--:--</b> · Pago único · Garantía de 30 días
   </div>
 </nav>
 
@@ -322,6 +322,7 @@ src="https://www.facebook.com/tr?id=1123148293569460&ev=PageView&noscript=1"
 <div class="wrap" id="oferta" style="padding:8px 20px 36px">
   <p style="text-align:center;margin:0 0 6px;font-size:16px;color:var(--muted);font-weight:600">Ya viste cómo funciona. Elige tu plan y empieza hoy:</p>
   <p style="text-align:center;margin:0 0 14px"><span style="display:inline-block;background:var(--accent);color:#fff;font-weight:800;font-size:13px;border-radius:999px;padding:6px 14px">PRECIO DE LANZAMIENTO · HASTA 74% DE DESCUENTO</span></p>
+  <p class="launch" style="text-align:center;margin:-4px 0 14px;font-size:14px;color:var(--muted);font-weight:600">El precio de lanzamiento termina en <b id="tl-cta" class="launch-t" style="font-family:'Sora',sans-serif;font-size:20px;color:var(--accent-dark)">--:--:--</b></p>
   <div style="display:flex;flex-wrap:wrap;gap:14px;justify-content:center;max-width:780px;margin:0 auto">
     <div class="card" style="flex:1 1 290px;max-width:370px;padding:22px;text-align:left">
       <div style="font-size:12px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.05em">Plan Básico</div>
@@ -699,6 +700,26 @@ src="https://www.facebook.com/tr?id=1123148293569460&ev=PageView&noscript=1"
     if(pl && "IntersectionObserver" in window){
       new IntersectionObserver(function(en){ if(en[0].isIntersecting) send("VioPlanes"); }, { threshold:.3 }).observe(pl);
     }
+  })();
+</script>
+<script>
+  // Cuenta regresiva REAL: fecha fija para todos los visitantes. Al terminar, subir el precio en la Hotmart y cambiar esta fecha.
+  (function(){
+    var END = new Date("2026-10-25T02:59:59Z").getTime(); // 24/10/2026 23:59 (hora de Brasilia)
+    var els = document.querySelectorAll(".launch-t");
+    function pad(n){ return String(n).padStart(2,"0"); }
+    function tick(){
+      var d = END - Date.now();
+      if(d <= 0){
+        document.querySelectorAll(".launch").forEach(function(e){ e.style.display = "none"; });
+        var b = document.getElementById("tl-top"); if(b && b.parentNode) b.parentNode.innerHTML = "Pago único · Garantía de 30 días";
+        return;
+      }
+      var days = Math.floor(d/86400000), h = Math.floor(d%86400000/3600000), m = Math.floor(d%3600000/60000), sec = Math.floor(d%60000/1000);
+      var txt = (days>0 ? days+"d " : "") + pad(h)+":"+pad(m)+":"+pad(sec);
+      els.forEach(function(e){ e.textContent = txt; });
+    }
+    tick(); setInterval(tick, 1000);
   })();
 </script>
 </body>
