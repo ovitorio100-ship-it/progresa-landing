@@ -705,7 +705,7 @@ src="https://www.facebook.com/tr?id=1123148293569460&ev=PageView&noscript=1"
 <script>
   // Cuenta regresiva REAL: fecha fija para todos los visitantes. Al terminar, subir el precio en la Hotmart y cambiar esta fecha.
   (function(){
-    var END = new Date("2026-10-25T02:59:59Z").getTime(); // 24/10/2026 23:59 (hora de Brasilia)
+    var END = new Date("2026-10-19T02:59:59Z").getTime(); // 18/10/2026 23:59 (hora de Brasilia)
     var els = document.querySelectorAll(".launch-t");
     function pad(n){ return String(n).padStart(2,"0"); }
     function tick(){
@@ -715,8 +715,8 @@ src="https://www.facebook.com/tr?id=1123148293569460&ev=PageView&noscript=1"
         var b = document.getElementById("tl-top"); if(b && b.parentNode) b.parentNode.innerHTML = "Pago único · Garantía de 30 días";
         return;
       }
-      var days = Math.floor(d/86400000), h = Math.floor(d%86400000/3600000), m = Math.floor(d%3600000/60000), sec = Math.floor(d%60000/1000);
-      var txt = (days>0 ? days+"d " : "") + pad(h)+":"+pad(m)+":"+pad(sec);
+      var h = Math.floor(d/3600000), m = Math.floor(d%3600000/60000), sec = Math.floor(d%60000/1000);
+      var txt = pad(h)+":"+pad(m)+":"+pad(sec);
       els.forEach(function(e){ e.textContent = txt; });
     }
     tick(); setInterval(tick, 1000);
