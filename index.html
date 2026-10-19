@@ -706,6 +706,13 @@ src="https://www.facebook.com/tr?id=1123148293569460&ev=PageView&noscript=1"
       fbq("track", "InitiateCheckout", {
         content_name: p.name, content_category: "Progresa", value: p.value, currency: "USD", num_items: 1
       });
+      // Espera un instante antes de ir al checkout para que el pixel termine de enviar el evento.
+      // (Ctrl/Cmd/clic medio abren otra pestana y no necesitan espera.)
+      if(e.ctrlKey || e.metaKey || e.shiftKey || e.button === 1 || a.target === "_blank") return;
+      e.preventDefault();
+      var href = a.href, go = false;
+      function nav(){ if(go) return; go = true; window.location.href = href; }
+      setTimeout(nav, 350);
     }, true);
   })();
 </script>
