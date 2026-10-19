@@ -704,7 +704,9 @@ src="https://www.facebook.com/tr?id=1123148293569460&ev=PageView&noscript=1"
       if(!p) return;
       window.progresaIC = (window.progresaIC || 0) + 1;
       fbq("track", "InitiateCheckout", {
-        content_name: p.name, content_category: "Progresa", value: p.value, currency: "USD", num_items: 1
+        content_name: p.name, content_category: "Progresa", value: p.value, currency: "USD", num_items: 1,
+        button_location: (a.closest("#oferta") ? "oferta_topo" : (a.closest("#planes") ? "planes_abajo" : "otro")),
+        plan: p.name
       });
       // Espera un instante antes de ir al checkout para que el pixel termine de enviar el evento.
       // (Ctrl/Cmd/clic medio abren otra pestana y no necesitan espera.)
@@ -726,6 +728,10 @@ src="https://www.facebook.com/tr?id=1123148293569460&ev=PageView&noscript=1"
       var p = window.scrollY / h * 100;
       if(p>=25) send("Scroll25"); if(p>=50) send("Scroll50"); if(p>=75) send("Scroll75");
     }, { passive:true });
+    var of = document.getElementById("oferta");
+    if(of && "IntersectionObserver" in window){
+      new IntersectionObserver(function(en){ if(en[0].isIntersecting) send("VioOferta"); }, { threshold:.3 }).observe(of);
+    }
     var pl = document.getElementById("planes");
     if(pl && "IntersectionObserver" in window){
       new IntersectionObserver(function(en){ if(en[0].isIntersecting) send("VioPlanes"); }, { threshold:.3 }).observe(pl);
